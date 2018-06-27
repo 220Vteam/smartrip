@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import Map from './components/Map'
+import Map from './components/Map';
+import PlaceEditor from './components/PlaceEditor';
 import './App.css';
 
 class App extends Component {
@@ -20,9 +21,10 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-         <Map position={this.props.place.place[0].latlng}/>
-         <img src='../public/Lifecycle-3.png'/>
+    	<div className="App">
+			<PlaceEditor/>
+        	<Map position={this.props.place.place[0].latlng}/>
+        	<img src='../public/Lifecycle-3.png'/>
       </div>
     );
   }

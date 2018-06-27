@@ -1,9 +1,11 @@
 const initialState = [
     {
+        id: null,
         name: null,
         latlng: [0,0],
         desc: null,
-        image: null
+        image: null,
+        type: []
     }
 ]
 export default (state = initialState, action) => {
