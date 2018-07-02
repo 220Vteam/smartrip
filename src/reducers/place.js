@@ -6,7 +6,9 @@ export default (state = initialState, action) => {
             return [
                 ...state,
                 action.payload
-            ];
+        ];
+        case 'SET_PLACES':
+            return action.payload;
         default:
             return state;           
     }
