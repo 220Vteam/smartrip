@@ -10,9 +10,9 @@ const MapComponent = ({markers}) => (
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
         />
-        {markers.map((mark) => {
+        {markers.map((mark, i) => {
           return(
-            <Marker position={mark.latlng} key={mark.id}>
+            <Marker position={mark.latlng} key={i}>
           <Popup>
             <div>
               <h3>{mark.name}</h3>

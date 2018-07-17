@@ -8,15 +8,33 @@ import PlaceList from './container/place_list';
 import './App.css';
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			moderator: true,
+			edit_mod: false
+		}
+	}
 	componentWillMount() {
 		fetch('/markers.json').then((res) =>
       	res.json()).then(data=> {this.props.set_places(data)
     	});
-  	}
-  render() {
+	}
+	OpenEdithor = () => {
+		this.setState({edit_mod: !this.state.edit_mod})
+	}
+	  
+  	render() {
+		const edithor_menu = (state, actions) => {
+			if (state.moderator) {
+				return (
+					state.edit_mod?<PlaceEditor add_place={actions.add_place} OpenEdithor={this.OpenEdithor}/>:<button onClick={actions.change_mod}>добавить</button>
+				)
+			}
+		}
     return (
     	<div className="App">
-			<PlaceEditor/>
+			{edithor_menu(this.state, {add_place: this.props.add_place, change_mod: this.OpenEdithor})}
 			<PlaceList/>
         	<Map markers={this.props.place.place}/>
       </div>
